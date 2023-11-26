@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Google Form Submission Redirect Example</title>
+    <style>
+      /* Resetting margin, padding, and setting height to 100% for the entire page */
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow: hidden; /* Hide scrollbar for the entire page */
+      }
+
+      /* Setting width and height to 100%, and removing the border for the iframe */
+      iframe {
+        width: 100%;
+        height: 100%;
+        border: 0; /* optional: removes border */
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Google Form embedded with an ID -->
+    <iframe
+      id="gform"
+      src="https://docs.google.com/forms/d/e/1FAIpQLSeI8_vYyaJgM7SJM4Y9AWfLq-tglWZh6yt7bEXEOJr_L-hV1A/viewform"
+    ></iframe>
+
+    <script type="text/javascript">
+      // Counter to track iframe reloads
+      var reloadCount = 0;
+
+      // Attach the onload event to the iframe after the DOM is fully loaded
+      document.getElementById("gform").onload = function () {
+        // Increment the load counter on every reload of the iframe
+        reloadCount++;
+
+        // Check if it's the second reload (indicating form submission)
+        if (reloadCount > 1) {
+          // Redirect to a specified URL after form submission
+          document.location = "https://example.com";
+        }
+      };
+    </script>
+  </body>
+</html>
